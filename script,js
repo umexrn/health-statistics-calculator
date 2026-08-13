@@ -1,0 +1,3 @@
+// Health Statistics Tracker
+// Step 1: project setup
+console.log("Health Statistics Tracker loaded");
