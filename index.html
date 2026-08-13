@@ -8,7 +8,69 @@
 </head>
 <body>
 
-  <h1>Health Statistics Tracker</h1>
+  <header class="topbar">
+    <h1>Health Statistics Tracker</h1>
+  </header>
+
+  <section class="card form-card">
+    <form id="statsForm">
+
+      <label>Name
+        <input type="text" id="fName" required>
+      </label>
+
+      <label>Age
+        <input type="number" id="fAge" min="10" max="100" required>
+      </label>
+
+      <label>Height (cm)
+        <input type="number" id="fHeight" min="100" max="250" required>
+      </label>
+
+      <label>Weight (kg)
+        <input type="number" id="fWeight" min="20" max="300" step="0.1" required>
+      </label>
+
+      <label>Lifestyle
+        <select id="fLifestyle" required>
+          <option value="">Select...</option>
+          <option value="Sedentary Lifestyle">Sedentary Lifestyle</option>
+          <option value="Light Active Lifestyle">Light Active Lifestyle</option>
+          <option value="Moderate Active Life Style">Moderate Active Life Style</option>
+          <option value="Very Active Lifestyle">Very Active Lifestyle</option>
+          <option value="Athlete">Athlete</option>
+        </select>
+      </label>
+
+      <label>Current Daily Calorie Intake (optional)
+        <input type="number" id="fCalories" min="0">
+      </label>
+
+      <label>Meals Per Day
+        <input type="number" id="fMeals" min="1" max="10" required>
+      </label>
+
+      <label>Goal
+        <select id="fGoal" required>
+          <option value="">Select...</option>
+          <option value="Weight Loss">Weight Loss</option>
+          <option value="Fat Loss">Fat Loss</option>
+          <option value="Muscle Gain">Muscle Gain</option>
+          <option value="Muscle Mass Gain">Muscle Mass Gain</option>
+          <option value="Weight Gain">Weight Gain</option>
+          <option value="Body Recomposition">Body Recomposition</option>
+          <option value="Maintenance">Maintenance</option>
+          <option value="General Fitness">General Fitness</option>
+        </select>
+      </label>
+
+      <button type="submit" class="btn btn-primary">Save Entry</button>
+    </form>
+  </section>
+
+  <section class="card results-card" id="resultsCard" hidden>
+    <!-- results injected in a later step -->
+  </section>
 
   <script src="script.js"></script>
 </body>
