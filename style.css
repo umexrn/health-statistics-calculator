@@ -1,3 +1,16 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f0f10;
+  color: #e5e5e5;
+  padding: 24px;
+}
+
 .topbar {
   margin-bottom: 24px;
 }
@@ -7,13 +20,31 @@
   font-weight: 600;
 }
 
+.layout {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1;
+  min-width: 280px;
+}
+
 .card {
   background: #1a1a1c;
   border: 1px solid #2a2a2c;
   border-radius: 8px;
   padding: 24px;
-  max-width: 480px;
-  margin-bottom: 24px;
+}
+
+.form-card {
+  max-width: 420px;
+  width: 100%;
 }
 
 .form-card form {
@@ -40,6 +71,12 @@
   font-size: 0.9rem;
 }
 
+.disclaimer {
+  font-size: 0.72rem;
+  color: #777;
+  margin-top: 4px;
+}
+
 .btn {
   padding: 10px 16px;
   border-radius: 6px;
@@ -56,4 +93,129 @@
 
 .btn-primary:hover {
   background: #1d4ed8;
+}
+
+/* Results */
+.results-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stat-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.stat-box, .stat-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 140px;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.stat-value {
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.stat-value-sm {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.stat-highlight {
+  color: #2563eb;
+}
+
+.stat-sub {
+  font-size: 0.78rem;
+  color: #999;
+}
+
+/* Progress card */
+.progress-card {
+  width: 100%;
+}
+
+.chart-toggle {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.toggle-btn {
+  background: #0f0f10;
+  border: 1px solid #2a2a2c;
+  color: #999;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+
+/* History */
+.history-card {
+  margin-top: 24px;
+  width: 100%;
+}
+
+.history-card h2 {
+  font-size: 1rem;
+  margin-bottom: 12px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #2a2a2c;
+}
+
+th {
+  color: #999;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+}
+
+.row-actions button {
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.row-actions button:hover { color: #ef4444; }
+
+/* Responsive */
+@media (max-width: 700px) {
+  .layout {
+    flex-direction: column;
+  }
+  .form-card {
+    max-width: 100%;
+  }
 }
