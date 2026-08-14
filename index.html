@@ -12,66 +12,129 @@
     <h1>Health Statistics Tracker</h1>
   </header>
 
-  <section class="card form-card">
-    <form id="statsForm">
+  <div class="layout">
 
-      <label>Name
-        <input type="text" id="fName" required>
-      </label>
+    <section class="card form-card">
+      <form id="statsForm">
 
-      <label>Age
-        <input type="number" id="fAge" min="10" max="100" required>
-      </label>
+        <label>Name
+          <input type="text" id="fName" required>
+        </label>
 
-      <label>Height (cm)
-        <input type="number" id="fHeight" min="100" max="250" required>
-      </label>
+        <label>Age
+          <input type="number" id="fAge" min="10" max="100" required>
+        </label>
 
-      <label>Weight (kg)
-        <input type="number" id="fWeight" min="20" max="300" step="0.1" required>
-      </label>
+        <label>Height (cm)
+          <input type="number" id="fHeight" min="100" max="250" required>
+        </label>
 
-      <label>Lifestyle
-        <select id="fLifestyle" required>
-          <option value="">Select...</option>
-          <option value="Sedentary Lifestyle">Sedentary Lifestyle</option>
-          <option value="Light Active Lifestyle">Light Active Lifestyle</option>
-          <option value="Moderate Active Life Style">Moderate Active Life Style</option>
-          <option value="Very Active Lifestyle">Very Active Lifestyle</option>
-          <option value="Athlete">Athlete</option>
-        </select>
-      </label>
+        <label>Weight (kg)
+          <input type="number" id="fWeight" min="20" max="300" step="0.1" required>
+        </label>
 
-      <label>Current Daily Calorie Intake (optional)
-        <input type="number" id="fCalories" min="0">
-      </label>
+        <label>Lifestyle
+          <select id="fLifestyle" required>
+            <option value="">Select...</option>
+            <option value="Sedentary Lifestyle">Sedentary Lifestyle</option>
+            <option value="Light Active Lifestyle">Light Active Lifestyle</option>
+            <option value="Moderate Active Life Style">Moderate Active Life Style</option>
+            <option value="Very Active Lifestyle">Very Active Lifestyle</option>
+            <option value="Athlete">Athlete</option>
+          </select>
+        </label>
 
-      <label>Meals Per Day
-        <input type="number" id="fMeals" min="1" max="10" required>
-      </label>
+        <label>Current Daily Calorie Intake (optional)
+          <input type="number" id="fCalories" min="0">
+        </label>
 
-      <label>Goal
-        <select id="fGoal" required>
-          <option value="">Select...</option>
-          <option value="Weight Loss">Weight Loss</option>
-          <option value="Fat Loss">Fat Loss</option>
-          <option value="Muscle Gain">Muscle Gain</option>
-          <option value="Muscle Mass Gain">Muscle Mass Gain</option>
-          <option value="Weight Gain">Weight Gain</option>
-          <option value="Body Recomposition">Body Recomposition</option>
-          <option value="Maintenance">Maintenance</option>
-          <option value="General Fitness">General Fitness</option>
-        </select>
-      </label>
+        <label>Meals Per Day
+          <input type="number" id="fMeals" min="1" max="10" required>
+        </label>
 
-      <button type="submit" class="btn btn-primary">Save Entry</button>
-    </form>
+        <label>Goal
+          <select id="fGoal" required>
+            <option value="">Select...</option>
+            <option value="Weight Loss">Weight Loss</option>
+            <option value="Fat Loss">Fat Loss</option>
+            <option value="Muscle Gain">Muscle Gain</option>
+            <option value="Muscle Mass Gain">Muscle Mass Gain</option>
+            <option value="Weight Gain">Weight Gain</option>
+            <option value="Body Recomposition">Body Recomposition</option>
+            <option value="Maintenance">Maintenance</option>
+            <option value="General Fitness">General Fitness</option>
+          </select>
+        </label>
+
+        <button type="submit" class="btn btn-primary">Save Entry</button>
+        <p class="disclaimer">BMI and calorie estimates are approximations, not medical advice.</p>
+      </form>
+    </section>
+
+    <div class="right-column">
+
+      <section class="card results-card" id="resultsCard" hidden>
+        <div class="stat-row">
+          <div class="stat-box">
+            <span class="stat-label">Current BMI</span>
+            <span class="stat-value" id="resBmi">--</span>
+            <span class="stat-sub" id="resBmiCategory"></span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-label">Estimated TDEE</span>
+            <span class="stat-value" id="resTdee">--</span>
+          </div>
+        </div>
+
+        <div class="stat-block">
+          <span class="stat-label">Recommended Intake</span>
+          <span class="stat-value stat-highlight" id="resTarget">--</span>
+        </div>
+
+        <div class="stat-block">
+          <span class="stat-label">Goal</span>
+          <span class="stat-value-sm" id="resGoal">--</span>
+        </div>
+
+        <div class="stat-block" id="resDiffBlock" hidden>
+          <span class="stat-label">Recommendation</span>
+          <span class="stat-value-sm" id="resDiff">--</span>
+        </div>
+
+        <div class="stat-block">
+          <span class="stat-label">Avg per Meal</span>
+          <span class="stat-value-sm" id="resPerMeal">--</span>
+        </div>
+      </section>
+
+      <section class="card progress-card" id="progressCard" hidden>
+        <div class="chart-toggle">
+          <button type="button" class="toggle-btn active" data-chart="weight">Weight</button>
+          <button type="button" class="toggle-btn" data-chart="bmi">BMI</button>
+        </div>
+        <canvas id="progressChart" height="220"></canvas>
+      </section>
+
+    </div>
+  </div>
+
+  <section class="card history-card" id="historyCard" hidden>
+    <h2>History</h2>
+    <table id="historyTable">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Weight</th>
+          <th>BMI</th>
+          <th>Goal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="historyTableBody"></tbody>
+    </table>
   </section>
 
-  <section class="card results-card" id="resultsCard" hidden>
-    <!-- results injected in a later step -->
-  </section>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
